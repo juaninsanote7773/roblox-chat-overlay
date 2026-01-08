@@ -11,16 +11,21 @@ app.use(express.json());
 
 //get last player to update remote
 app.get("/get_queue", (req, res) => {
-  res.send(last_input);
-  last_input = {};
+  res.json(chat_queue);
+  chat_queue = {}
 });
 
 //get input
 app.post("/send_queue", (req, res) => {
   console.log("Headers:", req.headers);
   console.log("Body:", req.body);
+
+  if (!chat_queue[req.body.jobID])
+  {
+    chat_queue[req.body.jobID] = []
+  }
   
-  last_input = req.body;
+  chat_queue[req.body.jobID].push({plr : req.body.plr, msg : req.body.msg});
   
   res.json({ success: true, message: "Data received!" });
 });
