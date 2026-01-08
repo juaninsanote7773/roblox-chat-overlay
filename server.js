@@ -4,6 +4,7 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+let chat_history = {}; //various purposes, can be used for debugging, moderation and such.
 let chat_queue = {}; //queue handling for multiple jobIDs
 
 app.use(cors());
@@ -24,9 +25,15 @@ app.post("/send_queue", (req, res) => {
   {
     chat_queue[req.body.jobID] = []
   }
+
+  if (!chat_history[req.body.jobID])
+  {
+    chat_history[req.body.jobID] = []
+  }
   
   chat_queue[req.body.jobID].push({plr : req.body.plr, msg : req.body.msg, time : req.body.time});
-  
+  chat_history[req.body.jobID].push({plr : req.body.plr, msg : req.body.msg, time : req.body.time});
+
   res.json({ success: true, message: "Data received!" });
 });
 
