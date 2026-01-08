@@ -10,7 +10,7 @@ JobID based chat overlay for free communication via render.com servers.
 
 * deploy latest commit whenever you have to run the server
 
-# roblox_logic_lua
+# roblox_logic
 These are the roblox place scripts. change the url in
 ServerScriptService.ChatOverlay to your render.com server
 link for proper communication.
