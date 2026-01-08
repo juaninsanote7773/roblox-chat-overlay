@@ -4,7 +4,7 @@ JobID based chat overlay for free communication via render.com servers.
 # how to setup this server:
 * create a render.com server
 * fork this repository or use this repository
-replace the commands with:
+/nreplace the commands with:
 * install command: npm install
 * start command: npm start
 
