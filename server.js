@@ -25,7 +25,7 @@ app.post("/send_queue", (req, res) => {
     chat_queue[req.body.jobID] = []
   }
   
-  chat_queue[req.body.jobID].push({plr : req.body.plr, msg : req.body.msg});
+  chat_queue[req.body.jobID].push({plr : req.body.plr, msg : req.body.msg, time : req.body.time});
   
   res.json({ success: true, message: "Data received!" });
 });
